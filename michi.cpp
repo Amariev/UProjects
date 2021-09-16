@@ -76,6 +76,10 @@ int main(){
         }
         if(c8=='X'){play = false;}
 
+	// win
+	if (c1+c2+c3 == 264 || c4+c5+c6 == 264 || c7+c8+c9 == 264){play = false;} 
+	if (c1+c2+c3 == 237 || c4+c5+c6 == 237 || c7+c8+c9 == 237){play = false;} 
+
     }
     return 0;
  
