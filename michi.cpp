@@ -28,10 +28,10 @@ int main(){
     while(play){
 
 	    if (c1+c2+c3 == 264 || c4+c5+c6 == 264 || c7+c8+c9 == 264 || c1+c4+c7 ==264 || c2+c5+c8 == 264 || c3+c6+c9==264 || c3+c5+c7==264 || c1+c3+c9==264){
-		    std::cout << "Felicitaciones " << current_player << "has ganado\n";
+		    std::cout << "Felicitaciones " << current_player << ", has ganado\n";
 		    play = false;} 
 	    if (c1+c2+c3 == 237 || c4+c5+c6 == 237 || c7+c8+c9 == 237 || c1+c4+c7 ==237 || c2+c5+c8 == 237 || c3+c6+c9==237 || c3+c5+c7==237 || c1+c3+c9==237){
-		    std::cout << "Felicitaciones " << current_player << "has ganado\n";
+		    std::cout << "Felicitaciones " << current_player << ", has ganado\n";
 		    play = false;}
 
 
