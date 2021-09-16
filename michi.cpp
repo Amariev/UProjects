@@ -40,6 +40,7 @@ int main(){
             current ++;
         }
 
+
         char option;
         std::cout << current_player << " elije el numero de casilla: ";
         std::cin >> option;
