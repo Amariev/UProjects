@@ -26,10 +26,14 @@ int main(){
 
 
     while(play){
-	    if (c1+c2+c3 == 264 || c4+c5+c6 == 264 || c7+c8+c9 == 264 || c1+c4+c7 ==264 || c2+c5+c8 == 264 || c3+c6+c9==264){
+
+	    if (c1+c2+c3 == 264 || c4+c5+c6 == 264 || c7+c8+c9 == 264 || c1+c4+c7 ==264 || c2+c5+c8 == 264 || c3+c6+c9==264 || c3+c5+c7==264 || c1+c3+c9==264){
 		    std::cout << current_player << ". Felicitaciones, has ganado\n";
 		    play = false;} 
-	    if (c1+c2+c3 == 237 || c4+c5+c6 == 237 || c7+c8+c9 == 237){play = false;} 
+	    if (c1+c2+c3 == 237 || c4+c5+c6 == 237 || c7+c8+c9 == 237 || c1+c4+c7 ==237 || c2+c5+c8 == 237 || c3+c6+c9==237 || c3+c5+c7==237 || c1+c3+c9==237){
+		    std::cout << current_player << ". Felicitaciones, has ganado\n";
+		    play = false;}
+
 
         //Tablero
         std::cout << " " << c1 << " " << "|" << " " << c2 << " " << "|" << " " << c3 << " \n";
@@ -50,10 +54,10 @@ int main(){
             current ++;
         }
 
-
         char option;
         std::cout << current_player << " elije el numero de casilla: ";
         std::cin >> option;
+
         switch (option) {
         case '1':
             c1 = current_pieza;
