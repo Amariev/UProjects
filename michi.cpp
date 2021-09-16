@@ -3,15 +3,19 @@
 int main(){
     std::cout << "Juego del tres en raya\n";
 
-    std::cout << "Nombre del jugador 1: ";
     std::string player1, player2, current_player;
+    std::cout << "Nombre del jugador 1: ";
     std::cin >> player1;
     std::cout << "Nombre del jugador 2: ";
     std::cin >> player2;
 
-    std::cout << "Jugador 1 elija pieza a jugar('X'o 'O'): ";
     char pieza1, pieza2, current_pieza;
-    std::cin >> pieza1;
+    do
+    {
+        std::cout << "Jugador 1 elija pieza a jugar('X' o 'O'): ";
+        std::cin >> pieza1;
+    } while (pieza1 != 'X' && pieza1 != 'O');
+    
     if (pieza1 == 'X') {pieza2 = 'O';}
     else {pieza2 = 'X';}
 
