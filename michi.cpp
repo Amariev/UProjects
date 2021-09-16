@@ -55,8 +55,9 @@ int main(){
         }
 
         char option;
-        std::cout << current_player << " elije el numero de casilla: ";
-        std::cin >> option;
+	if(play == true){
+        	std::cout << current_player << " elije el numero de casilla: ";
+        	std::cin >> option;}
 
         switch (option) {
         case '1':
@@ -91,21 +92,4 @@ int main(){
 
     }
     return 0;
- 
-
 }
-
-/* Bienvenido al tres en raya
-Nombre del jugador 1:
-Nombre del jugador 2: 
-Elija piesa a jugar('X'o 'O'):
-elija el numero de casilla:
-el ganador es:
-Empate
-
- f | g | f ;  1
-___|___|___   2
- g | f | g ;  3
-___|___|___   4
- f | g | f ;  5
-*/
