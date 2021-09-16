@@ -26,6 +26,9 @@ int main(){
 
 
     while(play){
+	    if (c1+c2+c3 == 264 || c4+c5+c6 == 264 || c7+c8+c9 == 264){play = false;} 
+	    if (c1+c2+c3 == 237 || c4+c5+c6 == 237 || c7+c8+c9 == 237){play = false;} 
+
         //Tablero
         std::cout << " " << c1 << " " << "|" << " " << c2 << " " << "|" << " " << c3 << " \n";
         std::cout << "___|___|___\n";
@@ -78,11 +81,7 @@ int main(){
             c9 = current_pieza;
             break;
         }
-        if(c8=='X'){play = false;}
-
 	// win
-	if (c1+c2+c3 == 264 || c4+c5+c6 == 264 || c7+c8+c9 == 264){play = false;} 
-	if (c1+c2+c3 == 237 || c4+c5+c6 == 237 || c7+c8+c9 == 237){play = false;} 
 
     }
     return 0;
