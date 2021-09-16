@@ -29,6 +29,7 @@ int main(){
         std::cout << "___|___|___\n";
         std::cout << " " << c7 << " " << "|" << " " << c8 << " " << "|" << " " << c9 << " \n";
 
+
         // current
         if (current % 2 == 1){
             current_pieza = pieza1;
