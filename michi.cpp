@@ -45,10 +45,10 @@ int main(){
 		    std::cout << "Felicitaciones " << current_player << ", has ganado\n";
 		    play = false;}
 
-	// empate
+	// empate 
 	// considerando que siempre va a haber 4'X' y 4'Y' hay dos opciones de empate 
         if ((c1+c2+c3+c4+c5+c6+c7+c8+c9 == 747 || c1+c2+c3+c4+c5+c6+c7+c8+c9 == 756) && play==true){
-		std::cout << "\nEmpate\n";
+		std::cout << "\nEl juego a terminado en empate\n";
 		play = false;}     			
 
         //Tablero
@@ -124,3 +124,4 @@ int main(){
     }
     return 0;
 }
+
