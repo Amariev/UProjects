@@ -71,7 +71,7 @@ int main(){
         }
 
 	// Option es el numero de casilla que elija el jugadora actual
-        char option;
+        int option;
 	// do while para ver si no repite casilla
 	// switch para el seleccionamiento de casilla
     do{
@@ -80,39 +80,39 @@ int main(){
                 std::cin >> option;
 
             switch (option) {
-            case '1':
+            case 1 :
                 if (c1>70){casilla_repetida = true;}
                 else{c1 = current_pieza; casilla_repetida=false;}
                 break;
-            case '2':
+            case 2 :
                 if (c2>70){casilla_repetida = true;}
                 else{c2 = current_pieza; casilla_repetida=false;}
                 break;
-            case '3':
+            case 3 :
                 if (c3>70){casilla_repetida = true;}
                 else{c3 = current_pieza; casilla_repetida=false;}
                 break;
-            case '4':
+            case 4 :
                 if (c4>70){casilla_repetida = true;}
                 else{c4= current_pieza; casilla_repetida=false;}
                 break;
-            case '5':
+            case 5 :
                 if (c5>70){casilla_repetida = true;}
                 else{c5 = current_pieza; casilla_repetida=false;}
                 break;
-            case '6':
+            case 6 :
                 if (c6>70){casilla_repetida = true;}
                 else{c6 = current_pieza; casilla_repetida=false;}
                 break;
-            case '7':
+            case 7 :
                 if (c7>70){casilla_repetida = true;}
                 else{c7 = current_pieza; casilla_repetida=false;}
                 break;
-            case '8':
+            case 8 :
                 if (c8>70){casilla_repetida = true;}
                 else{c8 = current_pieza;casilla_repetida=false;}
                 break;
-            case '9':
+            case 9 :
                 if (c9>70){casilla_repetida = true;}
                 else{c9 = current_pieza; casilla_repetida=false;}
                 break;
@@ -124,4 +124,5 @@ int main(){
     }
     return 0;
 }
+
 
