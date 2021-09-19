@@ -78,6 +78,10 @@ int main(){
         if(play == true){
                 std::cout << current_player << " elije el numero de casilla: ";
                 std::cin >> option;
+            if (option >9){
+                std::cout << "Ingrese una opcion correcta. Intente nuevamente: ";
+                std::cin >> option;
+            }   
 
             switch (option) {
             case 1 :
