@@ -21,7 +21,7 @@ int main(){
 
     char c1='1', c2='2', c3='3', c4='4', c5='5', c6='6', c7='7', c8='8', c9='9';
 
-    bool play = true;
+    bool play = true, casilla_repetida = false;
     int current = 1;
 
 
@@ -61,40 +61,51 @@ int main(){
         }
 
         char option;
-	if(play == true){
-        	std::cout << current_player << " elije el numero de casilla: ";
-        	std::cin >> option;}
+    do{
+        if(play == true){
+                std::cout << current_player << " elije el numero de casilla: ";
+                std::cin >> option;}
 
-        switch (option) {
-        case '1':
-            c1 = current_pieza;
-            break;
-        case '2':
-            c2 = current_pieza;
-            break;
-        case '3':
-            c3 = current_pieza;
-            break;
-        case '4':
-            c4 = current_pieza;
-            break;
-        case '5':
-            c5 = current_pieza;
-            break;
-        case '6':
-            c6 = current_pieza;
-            break;
-        case '7':
-            c7 = current_pieza;
-            break;
-        case '8':
-            c8 = current_pieza;
-            break;
-        case '9':
-            c9 = current_pieza;
-            break;
-        }
-	// win
+            switch (option) {
+            case '1':
+                if (c1>70){casilla_repetida = true;}
+                else{c1 = current_pieza; casilla_repetida=false;}
+                break;
+            case '2':
+                if (c2>70){casilla_repetida = true;}
+                else{c2 = current_pieza; casilla_repetida=false;}
+                break;
+            case '3':
+                if (c3>70){casilla_repetida = true;}
+                else{c3 = current_pieza; casilla_repetida=false;}
+                break;
+            case '4':
+                if (c4>70){casilla_repetida = true;}
+                else{c4= current_pieza; casilla_repetida=false;}
+                break;
+            case '5':
+                if (c5>70){casilla_repetida = true;}
+                else{c5 = current_pieza; casilla_repetida=false;}
+                break;
+            case '6':
+                if (c6>70){casilla_repetida = true;}
+                else{c6 = current_pieza; casilla_repetida=false;}
+                break;
+            case '7':
+                if (c7>70){casilla_repetida = true;}
+                else{c7 = current_pieza; casilla_repetida=false;}
+                break;
+            case '8':
+                if (c8>70){casilla_repetida = true;}
+                else{c8 = current_pieza;casilla_repetida=false;}
+                break;
+            case '9':
+                if (c9>70){casilla_repetida = true;}
+                else{c9 = current_pieza; casilla_repetida=false;}
+                break;
+            }
+            if (casilla_repetida){std::cout << "Esa casilla ya fue elejida\n";}
+    } while (casilla_repetida);
 
     }
     return 0;
