@@ -14,7 +14,7 @@ int main(){
     std::cin >> player1;
     std::cout << "Nombre del jugador 2: ";
     std::cin >> player2;
-    std::cout << "Jugador 1: " << player1 << "jugador 2: " << player2 << std::endl;
+    std::cout << "Jugador 1: " << player1 << " " << "jugador 2: " << player2 << std::endl;
 
     char pieza1, pieza2, current_pieza;
 
@@ -27,7 +27,7 @@ int main(){
     
     if (pieza1 == 'X') {pieza2 = 'O';}
     else {pieza2 = 'X';}
-    std::cout << player1 << ": " << pieza1 << player2 << ": " << pieza2 << std::endl;
+    std::cout << player1 << ": " << pieza1 << " " << player2 << ": " << pieza2 << std::endl;
 
     char c1='1', c2='2', c3='3', c4='4', c5='5', c6='6', c7='7', c8='8', c9='9';
 
@@ -77,7 +77,7 @@ int main(){
     do{
         if(play == true){
                 std::cout << current_player << " elije el numero de casilla: ";
-                std::cin >> option;}
+                std::cin >> option;
 
             switch (option) {
             case '1':
@@ -117,6 +117,7 @@ int main(){
                 else{c9 = current_pieza; casilla_repetida=false;}
                 break;
             }
+	}    
             if (casilla_repetida){std::cout << "Esa casilla ya fue elejida\n";}
     } while (casilla_repetida);
 
