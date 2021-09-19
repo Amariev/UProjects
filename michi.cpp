@@ -1,6 +1,12 @@
+// Integrantes:
+// Diego Astorga Cárdenas
+// Karol Quispe Taco
+// Camila Orihuela Flores
+
 #include <iostream>
 
 int main(){
+    // presentación
     std::cout << "Juego del tres en raya\n";
 
     std::string player1, player2, current_player;
@@ -8,8 +14,11 @@ int main(){
     std::cin >> player1;
     std::cout << "Nombre del jugador 2: ";
     std::cin >> player2;
+    std::cout << "Jugador 1: " << player1 << "jugador 2: " << player2 << std::endl;
 
     char pieza1, pieza2, current_pieza;
+
+    // elección de piezas 'X' o 'O'
     do
     {
         std::cout << "Jugador 1 elija pieza a jugar('X' o 'O'): ";
@@ -18,6 +27,7 @@ int main(){
     
     if (pieza1 == 'X') {pieza2 = 'O';}
     else {pieza2 = 'X';}
+    std::cout << player1 << ": " << pieza1 << player2 << ": " << pieza2 << std::endl;
 
     char c1='1', c2='2', c3='3', c4='4', c5='5', c6='6', c7='7', c8='8', c9='9';
 
@@ -49,7 +59,7 @@ int main(){
         std::cout << " " << c7 << " " << "|" << " " << c8 << " " << "|" << " " << c9 << " \n";
 
 
-        // current
+        // current, para pieza y jugador
         if (current % 2 == 1){
             current_pieza = pieza1;
             current_player = player1;
@@ -60,7 +70,10 @@ int main(){
             current ++;
         }
 
+	// Option es el numero de casilla que elija el jugadora actual
         char option;
+	// do while para ver si no repite casilla
+	// switch para el seleccionamiento de casilla
     do{
         if(play == true){
                 std::cout << current_player << " elije el numero de casilla: ";
