@@ -19,7 +19,8 @@ int main(){
 
     char pieza1, pieza2, current_pieza;
 
-    // elección de piezas 'X' o 'O'
+    // elección de piezas 'X' o 'O' 
+    // ascii 'X' = 88 y 'O' = 79
     do
     {
         std::cout << "Jugador 1 elija pieza a jugar('X' o 'O'): ";
@@ -30,6 +31,7 @@ int main(){
     else {pieza2 = 'X';}
     std::cout << player1 << ": " << pieza1 << " " << player2 << ": " << pieza2 << std::endl;
 
+    // ascii del 1 al 9 equivale del 49 al 57
     char c1='1', c2='2', c3='3', c4='4', c5='5', c6='6', c7='7', c8='8', c9='9';
 
     bool play = true, casilla_repetida = false;
