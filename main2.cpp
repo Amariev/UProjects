@@ -76,8 +76,18 @@ int main(){
         if(play == true){
                
                 if (current_player == player1){
-                  std::cout << current_player << " elije el numero de casilla: ";
-                std::cin >> option;}
+                    std::cout << current_player << " elije el numero de casilla: ";
+                    std::cin >> option;
+                    // verifica que la entrada este correcta
+                    while (!std::cin.good()){ 
+                        std::cout << "Ingrese una casilla valida: ";
+                        // Restaurar el flujo de entrada al estado de trabajo, errores
+                        std::cin.clear(); 
+                        // Deshazte de cualquier error que el usuario pueda haber ingresado
+                        std::cin.ignore(); 
+                        std::cin >> option;
+                    }
+                }
 
                 else 
                 {srand(time(NULL));
