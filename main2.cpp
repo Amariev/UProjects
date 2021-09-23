@@ -108,8 +108,7 @@ int main(){
             switch (option) {
             case 1 :
                 if (c1>70){casilla_repetida = true;}
-                else{c1 = current_pieza;                
-                casilla_repetida=false;}
+                else{c1 = current_pieza; casilla_repetida=false;}
                 break;
             case 2 :
                 if (c2>70){casilla_repetida = true;}
@@ -146,7 +145,8 @@ int main(){
             }
 	}    
             if (casilla_repetida && current_player == player1){std::cout << "Esa casilla ya fue elejida\n";}
-	       else if (casilla_repetida){ia_juega = false;}
+	        else if (casilla_repetida){ia_juega = false;}
+            else{ia_juega = true;}
     } while (casilla_repetida);
 
     //nivel 1 random
