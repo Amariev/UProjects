@@ -9,7 +9,7 @@ int main(){
     std::string player1, player2, current_player;
     std::cout << "Nombre del jugador 1: ";
     std::cin >> player1;
-    player2 = "Adversario";
+    player2 = "IA";
     std::cout << "Jugador 1: " << player1 << " " << "jugador 2: " << player2 << std::endl;
 
     char pieza1, pieza2, current_pieza;
@@ -29,7 +29,7 @@ int main(){
     // ascii del 1 al 9 equivale del 49 al 57
     char c1='1', c2='2', c3='3', c4='4', c5='5', c6='6', c7='7', c8='8', c9='9';
 
-    bool play = true, casilla_repetida = false;
+    bool play = true, casilla_repetida = false, ia_juega = true;
     int current = 1;
 
 
@@ -81,8 +81,11 @@ int main(){
 
                 else 
                 {srand(time(NULL));
-                 option = rand()% 9;
-                 std::cout << current_player << " elije el numero de casilla: "<<option << std::endl;
+                 option = rand()% 9 + 1;
+		 if(ia_juega){
+			std::cout << "turno de IA" << std::endl;
+		 }
+                 // std::cout << current_player << " elije el numero de casilla: "<<option << std::endl;
                 
                 }
                 
@@ -132,7 +135,8 @@ int main(){
                 break;
             }
 	}    
-            if (casilla_repetida){std::cout << "Esa casilla ya fue elejida\n";}
+            if (casilla_repetida && current_player == player1){std::cout << "Esa casilla ya fue elejida\n";}
+	    else if (casilla_repetida){ia_juega = false;}
     } while (casilla_repetida);
 
     //nivel 1 random
