@@ -90,7 +90,7 @@ int main(){
                 }
                 
             // revisemos si  "option" se eligio de manera correcta
-            if (option >9 or option == 0){
+            while (option >9 or option == 0){
             
                 std::cout << "Ingrese una opcion valida. Intente nuevamente: ";
                 std::cin >> option;}
@@ -136,7 +136,7 @@ int main(){
             }
 	}    
             if (casilla_repetida && current_player == player1){std::cout << "Esa casilla ya fue elejida\n";}
-	    else if (casilla_repetida){ia_juega = false;}
+	       else if (casilla_repetida){ia_juega = false;}
     } while (casilla_repetida);
 
     //nivel 1 random
