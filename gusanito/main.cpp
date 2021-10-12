@@ -52,20 +52,20 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
             {
                  std::cout << "C";
             } 
-            else {
-                bool draw_tail = false;
+            else if(taillenght > 0){
+                // bool draw_tail = false;
                 for(int k = 0; k < taillenght; k++)
                 {
                     if (tailX[k] == i && tailY[k] == j) 
                     {
                         std::cout << "s";
-                        draw_tail = true;
+                        // draw_tail = true;
                     }
                 }
-                if(!draw_tail){
+            }
+            else{
                         std::cout << " ";
                     // std::cout << " ";
-                }
             }
         }
         std::cout << std::endl;
