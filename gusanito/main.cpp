@@ -50,17 +50,17 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
     std::cout << "tail lenght: " << taillenght << std::endl; 
     for (int i = 0; i < H + 2 ; ++i) {
         for (int j = 0; j < W + 2; ++j) {
-            if (i==0 || i == H+1) 
+            if (i == Pos_player[0] && j == Pos_player[1]) 
+            {
+                std::cout << "S";
+            }
+            else if (i==0 || i == H+1) 
             {
                 std::cout << "-";
             }
             else if (j==0 || j == W+1)
             {
                 std::cout << "|";
-            }
-            else if (i == Pos_player[0] && j == Pos_player[1]) 
-            {
-                std::cout << "S";
             }
             else if (i == Pos_food[0] && j == Pos_food[1])
             {
@@ -137,7 +137,7 @@ void fisicas() // la logica del juego
     }
 
     //colisiones
-    if (Pos_player[1] >= W || Pos_player[1] < 0 || Pos_player[0] >= H || Pos_player[0] < 0) {
+    if (Pos_player[1] > W || Pos_player[1] <= 0 || Pos_player[0] > H || Pos_player[0] <= 0) {
         GameOver = true;
     }
 
