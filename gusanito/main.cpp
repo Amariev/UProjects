@@ -26,7 +26,7 @@ const int ESC = 27;
 
 char barra = 219;
 char head = 223;
-char tail = 177;
+char down = 220;
 
 int movimiento;
 
@@ -56,10 +56,17 @@ void delay (int a)
     }
     
 }
+void enemy()
+{
+    std::cout << RED << "             " << down << "   " << down << "\n";
+    std::cout <<"         "<<down<<barra<<down<<" "<<barra<<head<<barra<<head<<barra<<" "<<down<<barra<<down<<"\n";
+    std::cout <<"        "<<head<<head<<barra<<barra<<barra<<barra<<down<<barra<<down<<barra<<barra<<barra<<barra<<head<<head<<"\n";
+    std::cout << "             " << head << barra << head << barra << head <<"\n";
+}
 void dibujar() // dibujar el juego(tablero, gusano, comida)
 {
     // std::cout << "movimiento: " << movimiento << std::endl; 
-    std::cout << "score: " << score << std::endl; 
+    std::cout << YELLOW << "score: " << score << std::endl; 
     std::cout << "tail lenght: " << taillenght << std::endl; 
     for (int i = 0; i < H + 2 ; ++i) {
         for (int j = 0; j < W + 2; ++j) {
@@ -194,6 +201,7 @@ int main(){
             input();
             fisicas();
             // tail();
+            enemy();
             dibujar();
             std::cout << "X: " << Pos_food[0] << " Y: " << Pos_food[1] << std::endl;
 
