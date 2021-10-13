@@ -14,6 +14,7 @@
 #define WHITE "\e[0;37m"
 //background
 #define REDB "\e[41m"
+#define YELLOWB "\e[0;43m"
 
 bool GameOver = false;
 int score = 0;
@@ -42,6 +43,7 @@ char tablero;
 int num_bucle = 1;
 
 int enemy_life = 6;
+int player_life = 3;
 
 int cant_bloques=18, blocksX[23], blocksY[23];
 
@@ -153,6 +155,11 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
         }
         std::cout << std::endl;
     }
+    std::cout << "VIDA:" << std::endl;
+    for (int i = 0; i < player_life; i++) {
+        std::cout << WHITE << REDB << corazon << " " << NC;
+    }
+    std::cout << std::endl;
     if(score > puntaje_para_enemigo)
     {
         std::cout << "VIDAS DEL ENEMIGO:\n";
@@ -183,11 +190,46 @@ void input() // entrada
         }
     } 
 }
+void loser()
+{
+    std::cout << BLUE;
+    std::cout << "     _|_" << std::endl;
+    std::cout << "    `-|-`" << std::endl;
+    std::cout << "      |" << std::endl;
+    std::cout << "  .-'~^~`-." << std::endl;
+    std::cout << ".' _     _ `." << std::endl;
+    std::cout << "| |_) | |_) |" << std::endl;
+    std::cout << "| | \\ | |   |" << std::endl;
+    std::cout << "|           |"<< std::endl;
+    std::cout << "|           |" << std::endl;
+    std::cout << "`=.........=`" << std::endl;
+}
+void victory()
+{
+    std::cout << "                      __    __    __    __" << std::endl;
+    std::cout << "                     /  \\  /  \\  /  \\  /  \\" << std::endl;
+    std::cout << "____________________/  __\\/  __\\/  __\\/  __\\_____________________________" << std::endl;
+    std::cout << "____FELICIDADES____/  /__/  /__/  /__/  /______________GANASTE___________" << std::endl;
+    std::cout << "                   | / \\   / \\   / \\   / \\  \\____" << std::endl;
+    std::cout << "                   |/   \\_/   \\_/   \\_/   \\    o \\" << std::endl;
+    std::cout << "                                           \\_____/--<" << std::endl;
+}
 
 void posicion_food()
 {
     Pos_food[0] = rand() % H + 1;
     Pos_food[1] = rand() % W + 1;
+}
+void reset()
+{
+    Pos_player[0] = H / 2;
+    Pos_player[1] = W / 2;
+    posicion_food();
+    taillenght = 0;
+
+    if (player_life == 0) {
+        GameOver = true;
+    }
 }
 
 void fisicas() // la logica del juego
@@ -234,23 +276,29 @@ void fisicas() // la logica del juego
         if (score > puntaje_para_enemigo) {
             posicion_bloques();
             enemy_life--;
+            if (enemy_life == 0) {
+                GameOver = true;
+            }
         }
     }
 
     //colisiones
     if (Pos_player[1] > W || Pos_player[1] <= 0 || Pos_player[0] > H || Pos_player[0] <= 0) {
-        GameOver = true;
+        player_life--;
+        reset();
     }
 
     for (int i = 0; i < taillenght; i++) {
         if (tailX[i] == Pos_player[0] && tailY[i] == Pos_player[1]) {
-           GameOver = true; 
+            player_life--;
+            reset();
         }
     }
     
     for (int i = 0;  i < cant_bloques; i++) {
         if (blocksX[i] == Pos_player[0] && blocksY[i] == Pos_player[1]) {
-            GameOver = true;
+            player_life--;
+            reset();
         }
     }
 }
@@ -277,6 +325,13 @@ int main(){
             posicion_food();
         }
         num_bucle++;
+    }
+    if (player_life == 0)
+    {
+        loser();
+    }
+    else if (enemy_life == 0) {
+        victory();
     }
 }
 
