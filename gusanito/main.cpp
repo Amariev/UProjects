@@ -121,6 +121,18 @@ void fisicas() // la logica del juego
         posicion_food();
         taillenght++;
     }
+
+    //colisiones
+    if (Pos_player[1] >= W || Pos_player[1] < 0 || Pos_player[0] >= H || Pos_player[0] < 0) {
+        GameOver = true;
+    }
+
+    for (int i = 0; i < taillenght; i++) {
+        if (tailX[i] == Pos_player[0] && tailY[i] == Pos_player[1]) {
+           GameOver = true; 
+        }
+    }
+
     // cola del gusano
     int TailPosX = tailX[0];
     int TailPosY = tailY[0];
@@ -129,7 +141,7 @@ void fisicas() // la logica del juego
     tailX[0] = Pos_player[0];
     tailY[0] = Pos_player[1];
 
-    for(int i = -1; i < taillenght; ++i){
+    for(int i = 1; i < taillenght; ++i){
         TailPosX2 = tailX[i];
         TailPosY2 = tailY[i];
 
