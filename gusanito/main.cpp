@@ -24,6 +24,10 @@ const int IZQUIERDA  = 75;
 const int DERECHA  = 77;
 const int ESC = 27;
 
+char barra = 219;
+char head = 223;
+char tail = 177;
+
 int movimiento;
 
 int Pos_player[2], Pos_food[2];
@@ -61,15 +65,15 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
         for (int j = 0; j < W + 2; ++j) {
             if (i == Pos_player[0] && j == Pos_player[1]) 
             {
-                std::cout << YELLOW "G";
+                std::cout << YELLOW << head;
             }
             else if (i==0 || i == H+1) 
             {
-                std::cout << CIAN "-";
+                std::cout << CIAN << barra;
             }
             else if (j==0 || j == W+1)
             {
-                std::cout << CIAN "|";
+                std::cout << CIAN << barra;
             }
             else if (i == Pos_food[0] && j == Pos_food[1])
             {
@@ -81,7 +85,7 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
                 {
                     if (tailX[k] == i && tailY[k] == j) 
                     {
-                        std::cout << YELLOW "o";
+                        std::cout << YELLOW "@";
                         draw_tail = true;
                     }
                 }
