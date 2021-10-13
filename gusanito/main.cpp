@@ -166,6 +166,7 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
         for (int i = 0; i < enemy_life; i++) {
             std::cout << BLACK << REDB << corazon << " " << NC;
         }
+        std::cout << std::endl;
 
     }
 }
