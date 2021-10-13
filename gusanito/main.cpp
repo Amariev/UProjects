@@ -28,7 +28,21 @@ int taillenght;
 int tailX[150];
 int tailY[150];
 
+void delay (int a)
+{
+    int add;
+    int time;
+    
+    time = a * 100000000;
 
+    for (int i = 0; i < time; i++)
+    {
+        add *= i;
+        add++;
+        add++;
+    }
+    
+}
 void dibujar() // dibujar el juego(tablero, gusano, comida)
 {
     // std::cout << "movimiento: " << movimiento << std::endl; 
@@ -163,7 +177,7 @@ int main(){
     {
         // if(num_bucle % 10000 == 0)
         {
-            Sleep(100);
+            delay (1);
             input();
             fisicas();
             // tail();
