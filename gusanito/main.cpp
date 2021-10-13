@@ -114,6 +114,25 @@ void posicion_food()
 
 void fisicas() // la logica del juego
 {
+    // cola del gusano
+    int TailPosX = tailX[0];
+    int TailPosY = tailY[0];
+    int TailPosX2, TailPosY2;
+
+    tailX[0] = Pos_player[0];
+    tailY[0] = Pos_player[1];
+
+    for(int i = 1; i < taillenght; ++i){
+        TailPosX2 = tailX[i];
+        TailPosY2 = tailY[i];
+
+        tailX[i] = TailPosX;
+        tailY[i] = TailPosY;
+
+        TailPosX = TailPosX2;
+        TailPosY = TailPosY2;
+    }
+
     // movimiento
     switch (movimiento) {
         case ARRIBA:
@@ -145,25 +164,6 @@ void fisicas() // la logica del juego
         if (tailX[i] == Pos_player[0] && tailY[i] == Pos_player[1]) {
            GameOver = true; 
         }
-    }
-
-    // cola del gusano
-    int TailPosX = tailX[0];
-    int TailPosY = tailY[0];
-    int TailPosX2, TailPosY2;
-
-    tailX[0] = Pos_player[0];
-    tailY[0] = Pos_player[1];
-
-    for(int i = 1; i < taillenght; ++i){
-        TailPosX2 = tailX[i];
-        TailPosY2 = tailY[i];
-
-        tailX[i] = TailPosX;
-        tailY[i] = TailPosY;
-
-        TailPosX = TailPosX2;
-        TailPosY = TailPosY2;
     }
 }
 
