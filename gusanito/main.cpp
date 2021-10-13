@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <windows.h>
 
+#define NC "\e[0m" // resetear colores
 #define BLACK "\e[0;30m"
 #define RED "\e[0;31m"
 #define GREEN "\e[0;32m"
@@ -11,6 +12,8 @@
 #define MAGENTA "\e[0;35m"
 #define CIAN "\e[0;36m"
 #define WHITE "\e[0;37m"
+//background
+#define REDB "\e[41m"
 
 bool GameOver = false;
 int score = 0;
@@ -28,6 +31,7 @@ char barra = 219;
 char head = 223;
 char down = 220;
 char bloque = 176;
+char corazon = 3;
 
 int movimiento;
 
@@ -37,12 +41,16 @@ char tablero;
 
 int num_bucle = 1;
 
+int enemy_life = 6;
+
 int cant_bloques=18, blocksX[23], blocksY[23];
 
 //cola
 int taillenght;
 int tailX[150];
 int tailY[150];
+
+int puntaje_para_enemigo = 20;
 
 void delay (int a)
 {
@@ -97,8 +105,8 @@ void posicion_bloques()
 void dibujar() // dibujar el juego(tablero, gusano, comida)
 {
     // std::cout << "movimiento: " << movimiento << std::endl; 
+    // std::cout << "\033[2J\033[1;1H";
     std::cout << YELLOW << "score: " << score << std::endl; 
-    std::cout << "tail lenght: " << taillenght << std::endl; 
     for (int i = 0; i < H + 2 ; ++i) {
         for (int j = 0; j < W + 2; ++j) {
             if (i == Pos_player[0] && j == Pos_player[1]) 
@@ -128,7 +136,7 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
                     }
                 }
                 bool draw_blocks = false;
-                if (score > 20)
+                if (score > puntaje_para_enemigo)
                 {
                     for (int k = 0; k < cant_bloques; k++) 
                     {
@@ -144,6 +152,14 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
             }
         }
         std::cout << std::endl;
+    }
+    if(score > puntaje_para_enemigo)
+    {
+        std::cout << "VIDAS DEL ENEMIGO:\n";
+        for (int i = 0; i < enemy_life; i++) {
+            std::cout << BLACK << REDB << corazon << " " << NC;
+        }
+
     }
 }
 
@@ -215,8 +231,9 @@ void fisicas() // la logica del juego
         score += 10;
         posicion_food();
         taillenght++;
-        if (score > 20) {
+        if (score > puntaje_para_enemigo) {
             posicion_bloques();
+            enemy_life--;
         }
     }
 
@@ -240,27 +257,24 @@ void fisicas() // la logica del juego
 
 int main(){
 
+    std::cout << "\033[2J\033[1;1H";
     srand(time(0));
     Pos_player[0] = H / 2;
     Pos_player[1] = W / 2;
     posicion_food();
     while(!GameOver)
     {
-        // if(num_bucle % 10000 == 0)
-        {
-            delay (1);
-            input();
-            fisicas();
-            // tail();
-            if (score > 20) {
-                enemy();
-            }
-            dibujar();
-            std::cout << "X: " << Pos_food[0] << " Y: " << Pos_food[1] << std::endl;
+        delay (1);
+        input();
+        fisicas();
+        std::cout << "\033[2J\033[1;1H";
+        if (score > puntaje_para_enemigo) {
+            enemy();
+        }
+        dibujar();
 
-            if (num_bucle % 300 == 0){
-                posicion_food();
-            }
+        if (num_bucle % 300 == 0){
+            posicion_food();
         }
         num_bucle++;
     }
