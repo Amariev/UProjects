@@ -52,19 +52,19 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
         for (int j = 0; j < W + 2; ++j) {
             if (i == Pos_player[0] && j == Pos_player[1]) 
             {
-                std::cout << "S";
+                std::cout << "\U0001f438";
             }
             else if (i==0 || i == H+1) 
             {
-                std::cout << "-";
+                std::cout << "\U0001f7ea";
             }
             else if (j==0 || j == W+1)
             {
-                std::cout << "|";
+                std::cout << "\U0001f7ea";
             }
             else if (i == Pos_food[0] && j == Pos_food[1])
             {
-                 std::cout << "C";
+                 std::cout << "\U0001f353";
             } 
             else{
                 bool draw_tail = false;
@@ -72,7 +72,7 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
                 {
                     if (tailX[k] == i && tailY[k] == j) 
                     {
-                        std::cout << "s";
+                        std::cout << "\U0001f7e2";
                         draw_tail = true;
                     }
                 }
