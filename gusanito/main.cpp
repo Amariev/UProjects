@@ -3,15 +3,6 @@
 #include <conio.h>
 #include <windows.h>
 
-#define BLACK "\e[0;30m"
-#define RED "\e[0;31m"
-#define GREEN "\e[0;32m"
-#define YELLOW "\e[0;33m"
-#define BLUE "\e[0;34m"
-#define MAGENTA "\e[0;35m"
-#define CIAN "\e[0;36m"
-#define WHITE "\e[0;37m"
-
 bool GameOver = false;
 int score = 0;
 
@@ -23,10 +14,6 @@ const int ABAJO  = 80;
 const int IZQUIERDA  = 75;
 const int DERECHA  = 77;
 const int ESC = 27;
-
-char barra = 219;
-char head = 223;
-char tail = 177;
 
 int movimiento;
 
@@ -65,19 +52,19 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
         for (int j = 0; j < W + 2; ++j) {
             if (i == Pos_player[0] && j == Pos_player[1]) 
             {
-                std::cout << YELLOW << head;
+                std::cout << "G";
             }
             else if (i==0 || i == H+1) 
             {
-                std::cout << CIAN << barra;
+                std::cout << "-";
             }
             else if (j==0 || j == W+1)
             {
-                std::cout << CIAN << barra;
+                std::cout << "|";
             }
             else if (i == Pos_food[0] && j == Pos_food[1])
             {
-                 std::cout << RED "O";
+                 std::cout << "O";
             } 
             else{
                 bool draw_tail = false;
@@ -85,7 +72,7 @@ void dibujar() // dibujar el juego(tablero, gusano, comida)
                 {
                     if (tailX[k] == i && tailY[k] == j) 
                     {
-                        std::cout << YELLOW "@";
+                        std::cout << "o";
                         draw_tail = true;
                     }
                 }
