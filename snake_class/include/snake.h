@@ -2,19 +2,20 @@
 #define SNAKE_H
 
 #include "entity.h"
+#include "../ext/conio.h"
 
 enum Directions {UP=1, DOWN, RIGHT, LEFT};
 
 class Snake : public Entity
 {
     private:
-        int lives, tailLenght, velocity;
+        int lives, tailLenght, velocity, cols, rows;
         
         Directions snakeDirection;
 
     public:
         Snake();
-
+        Snake(int _rows, int _cols);
         Snake(Snake &o);
         ~Snake();
 
@@ -32,8 +33,12 @@ class Snake : public Entity
 
         void move();
         void increaseTailLenght();
-        bool checkEatFood();
+        bool checkEatFood(coord foodPos);
         bool checkCollision();
+        void input();
 
+        void imprimirAtributos();
+
+        void update();
 };
 #endif
