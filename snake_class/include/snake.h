@@ -1,21 +1,16 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 
-#include <iostream>
+#include "entity.h"
 
 enum Directions {UP=1, DOWN, RIGHT, LEFT};
-struct coord{int X, Y; };
 
-class Snake
+class Snake : public Entity
 {
     private:
-        int lives, score, tailLenght, velocity;
-
-        std::string symbol;
+        int lives, tailLenght, velocity;
         
         Directions snakeDirection;
-
-        coord head;
 
     public:
         Snake();
@@ -23,23 +18,22 @@ class Snake
         Snake(Snake &o);
         ~Snake();
 
-        void setSymbol(std::string);
         void setLives(int);
         void setTailLenght(int);
         void setVelocity(int);
 
         void setDirection(Directions);
 
-        std::string getSymbol();
         int getLives();
         int getTailLenght();
-        coord getSnakePos();
         int getVelocity();
 
         Directions getDirection();
 
         void move();
         void increaseTailLenght();
+        bool checkEatFood();
+        bool checkCollision();
 
 };
 #endif

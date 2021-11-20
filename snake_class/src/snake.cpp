@@ -2,6 +2,9 @@
 
 Snake::Snake(){
     tailLenght = 0;
+    lives = 5;
+    symbol = "\u2B23";
+    velocity = 1;
 }
 
 Snake::~Snake(){}
@@ -14,9 +17,6 @@ Snake::Snake(Snake &o){
 
 
 // **********SET FUNCTIONS***************
-void Snake::setSymbol(std::string symbol) { 
-    this->symbol = symbol; 
-}
 
 void Snake::setLives(int lives) { 
     this->lives = lives; 
@@ -36,9 +36,6 @@ void Snake::setVelocity(int velocity)
 }
 
 //***********GET FUNCTIONS****************
-std::string Snake::getSymbol() { 
-    return symbol; 
-}
 
 int Snake::getLives() { 
     return lives; 
@@ -56,10 +53,6 @@ int Snake::getVelocity() {
     return velocity; 
 }
 
-coord Snake::getSnakePos() {
-    return head;
-}
-
 void Snake::increaseTailLenght(){
     tailLenght++;
 }
@@ -68,16 +61,16 @@ void Snake::increaseTailLenght(){
 void Snake::move(){
     switch (snakeDirection) {
         case Directions::UP:
-            head.Y -=velocity; 
+            pos.Y -=velocity; 
             break;
         case Directions::DOWN:
-            head.Y += velocity; 
+            pos.Y += velocity; 
             break;
         case Directions::RIGHT:
-            head.X += velocity; 
+            pos.X += velocity; 
             break;
         case Directions::LEFT:
-            head.X -= velocity; 
+            pos.X -= velocity; 
             break;
     }
 }
