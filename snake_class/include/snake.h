@@ -9,35 +9,37 @@ enum Directions {UP=1, DOWN, RIGHT, LEFT};
 class Snake : public Entity
 {
     private:
-        int lives, tailLenght, velocity, cols, rows;
-        
-        Directions snakeDirection;
+        int lives, tailLength, velocity, cols, rows, score;
+        Directions direction;
 
     public:
         Snake();
         Snake(int _rows, int _cols);
-        Snake(Snake &o);
         ~Snake();
 
         void setLives(int);
-        void setTailLenght(int);
+        void setTailLength(int);
         void setVelocity(int);
 
         void setDirection(Directions);
 
         int getLives();
-        int getTailLenght();
+        int getTailLength();
         int getVelocity();
 
         Directions getDirection();
 
         void move();
-        void increaseTailLenght();
-        bool checkEatFood(coord foodPos);
-        bool checkCollision();
+        void increaseTailLength();
+        void updateScore();
+        void eatFood();
+        bool snakeCollision(Snake &);
         void input();
+        void rebound();
+        void generateTail();
 
         void imprimirAtributos();
+
 
         void update();
 };

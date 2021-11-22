@@ -1,25 +1,17 @@
 #include "../include/snake.h"
 
 Snake::Snake(){
-    tailLenght = 0;
-    lives = 5;
-    symbol = "\u2B23";
-    velocity = 1;
 }
 
 Snake::Snake(int _rows, int _cols){
     this->rows = _rows;
     this->cols = _cols;
     pos.X = cols/3; pos.Y = rows/2;
-    symbol = "\u2A00";
-    tailLenght = 0;
+    symbol = "\u26AA";
+    tailLength = 0;
     lives = 5;
     velocity = 1;
-}
-
-Snake::Snake(Snake &o):Entity(o){
-    lives = o.lives;
-    velocity = o.velocity;
+    score = 0; 
 }
 
 Snake::~Snake(){}
@@ -31,12 +23,12 @@ void Snake::setLives(int lives) {
     this->lives = lives; 
 }
 
-void Snake::setTailLenght(int tailLenght){
-    this->tailLenght = tailLenght;
+void Snake::setTailLength(int tailLength){
+    this->tailLength = tailLength;
 }
 
-void Snake::setDirection(Directions snakeDirection){
-    this->snakeDirection = snakeDirection;
+void Snake::setDirection(Directions direction){
+    this->direction = direction;
 }
 
 void Snake::setVelocity(int velocity)
@@ -50,25 +42,29 @@ int Snake::getLives() {
     return lives; 
 }
 
-int Snake::getTailLenght() { 
-    return tailLenght; 
+int Snake::getTailLength() { 
+    return tailLength; 
 }
 
 Directions Snake::getDirection(){
-    return snakeDirection;
+    return direction;
 }
 
 int Snake::getVelocity() { 
     return velocity; 
 }
 
-void Snake::increaseTailLenght(){
-    tailLenght++;
+void Snake::increaseTailLength(){
+    tailLength++;
+}
+
+void Snake::updateScore(){
+    score += 10;
 }
 
 //******move******
 void Snake::move(){
-    switch (snakeDirection) {
+    switch (direction) {
         case Directions::UP:
             pos.Y -= velocity; 
             break;
@@ -84,51 +80,63 @@ void Snake::move(){
     }
 }
 
-// *********Collisions*******
-bool Snake::checkEatFood(coord foodPos){
-    if (pos.X == foodPos.X  && pos.Y == foodPos.Y){
+void Snake::eatFood(){
+    increaseTailLength();
+    updateScore();
+}
+
+bool Snake::snakeCollision(Snake &o){
+    if (pos.X == o.pos.X && pos.Y == o.pos.Y){
         return 1;
     }
     return 0;
 }
-
-bool Snake::checkCollision(){
-    if (pos.X > cols-2 || pos.X < 1 || pos.Y > rows-2 || pos.Y < 1){
-        return 1;
-    }
-    return 0;
-}
-
+//Entrada del movimiento
 void Snake::input()
 {
     if (kbhit()) {
         switch (getch()) {
-            case 'w': case 'W':
-                snakeDirection = UP;
-                break;
-            case 's': case 'S':
-                snakeDirection = DOWN;
-                break;
-            case 'a': case 'A':
-                snakeDirection = LEFT;
-                break;
-            case 'd': case 'D':
-                snakeDirection = RIGHT;
-                break;
+                case 'w': case 'W': case 'i': case 'I':
+                    direction = UP;
+                    break;
+                case 's': case 'S': case 'k': case 'K':
+                    direction = DOWN;
+                    break;
+                case 'a': case 'A': case 'j': case 'J':
+                    direction = LEFT;
+                    break;
+                case 'd': case 'D': case 'l': case 'L':
+                    direction = RIGHT;
+                    break;
         }
     } 
+    move();
 }
+
+//Rebote
+void Snake::rebound(){
+    if (pos.Y > rows-2){
+        direction = UP;
+    }
+    else if(pos.Y < 1){
+        direction = DOWN;
+    }
+    else if (pos.X > cols-2){
+        direction = LEFT;
+    }
+    else if (pos.X < 1){
+        direction = RIGHT;
+    }
+}
+
 
 void Snake::imprimirAtributos(){
     std::cout << "******Atributos**********\n";
     std::cout <<"Pos X: " << pos.X << "Pos Y: "<< pos.Y << std::endl;
+    std::cout << "Score: " << score << std::endl;
+    std::cout << "tailLenght: " << tailLength << std::endl;
 }
 
 void Snake::update(){
     imprimirAtributos();
-    input();
-    move();
-    if (checkCollision()){
-        std::cout << "Colisionnnnnnnn\n";
-    }
 }

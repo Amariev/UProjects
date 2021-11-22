@@ -2,9 +2,10 @@
 
 Entity::Entity(){}
 
-Entity::Entity(coord pos){
+Entity::Entity(Coord pos){
     this->pos = pos;
 }
+
 
 Entity::Entity(Entity &o){
     pos = o.pos;
@@ -14,7 +15,7 @@ Entity::Entity(Entity &o){
 
 Entity::~Entity(){}
 
-void Entity::setPos(coord _pos){
+void Entity::setPos(Coord _pos){
     this->pos = _pos;
 }
 
@@ -26,6 +27,7 @@ std::string Entity::getSymbol(){
     return symbol;
 }
 
-coord Entity::getPos(){
+
+Coord Entity::getPos(){
     return pos;
 }

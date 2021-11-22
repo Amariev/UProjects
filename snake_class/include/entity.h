@@ -2,26 +2,27 @@
 #define ENTITY_H
 
 #include <iostream>
+#include "colors.h"
 
-struct coord{int X, Y; };
+struct Coord{int X, Y; };
 
 class Entity
 {
   protected:
-    coord pos;
+    Coord pos;
     std::string color;
     std::string symbol;
     
   public:
     Entity();
-    Entity(Entity &o);
-    Entity(coord pos);
+    Entity(Entity &);
+    Entity(Coord pos);
     ~Entity();
 
-    void setPos(coord);
+    void setPos(Coord);
     void setSymbol(std::string);
 
     std::string getSymbol();
-    coord getPos();
+    Coord getPos();
 };
 #endif
