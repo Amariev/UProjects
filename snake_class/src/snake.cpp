@@ -23,10 +23,6 @@ void Snake::setLives(int lives) {
     this->lives = lives; 
 }
 
-void Snake::setTailLength(int tailLength){
-    this->tailLength = tailLength;
-}
-
 void Snake::setDirection(Directions direction){
     this->direction = direction;
 }
@@ -42,20 +38,12 @@ int Snake::getLives() {
     return lives; 
 }
 
-int Snake::getTailLength() { 
-    return tailLength; 
-}
-
 Directions Snake::getDirection(){
     return direction;
 }
 
 int Snake::getVelocity() { 
     return velocity; 
-}
-
-void Snake::increaseTailLength(){
-    tailLength++;
 }
 
 void Snake::updateScore(){
@@ -81,7 +69,6 @@ void Snake::move(){
 }
 
 void Snake::eatFood(){
-    increaseTailLength();
     updateScore();
 }
 
@@ -91,30 +78,24 @@ bool Snake::snakeCollision(Snake &o){
     }
     return 0;
 }
-//Entrada del movimiento
-void Snake::input()
-{
-    if (kbhit()) {
-        switch (getch()) {
-                case 'w': case 'W': case 'i': case 'I':
-                    direction = UP;
-                    break;
-                case 's': case 'S': case 'k': case 'K':
-                    direction = DOWN;
-                    break;
-                case 'a': case 'A': case 'j': case 'J':
-                    direction = LEFT;
-                    break;
-                case 'd': case 'D': case 'l': case 'L':
-                    direction = RIGHT;
-                    break;
-        }
-    } 
-    move();
+// Rebote
+
+void Snake::rebound(){
+    switch (direction) {
+        case UP:
+            direction = RIGHT;
+        case DOWN:
+            direction = LEFT;
+        case RIGHT:
+            direction = UP;
+        case LEFT:
+            direction = DOWN;
+        default:
+            break;
+    }
 }
 
-//Rebote
-void Snake::rebound(){
+void Snake::rebound_edge(){
     if (pos.Y > rows-2){
         direction = UP;
     }

@@ -16,7 +16,7 @@ void Game::delay (int a)
     int add=0;
     int time;
     
-    time = a * 1000000;
+    time = a * 10000000;
 
     for (int i = 0; i < time; i++)
     {
@@ -35,9 +35,10 @@ void Game::run(){
     Board *const board = new Board(rows,cols);
     while (state != END){
         clearScreen();
-        delay(8);
+        delay(4);
         board->generateMatrix();
         board->update();
 
     }
+    delete board;
 }

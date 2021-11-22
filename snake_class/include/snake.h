@@ -18,25 +18,21 @@ class Snake : public Entity
         ~Snake();
 
         void setLives(int);
-        void setTailLength(int);
         void setVelocity(int);
 
         void setDirection(Directions);
 
         int getLives();
-        int getTailLength();
         int getVelocity();
 
         Directions getDirection();
 
         void move();
-        void increaseTailLength();
         void updateScore();
         void eatFood();
         bool snakeCollision(Snake &);
-        void input();
         void rebound();
-        void generateTail();
+        void rebound_edge();
 
         void imprimirAtributos();
 

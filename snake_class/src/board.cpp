@@ -73,7 +73,7 @@ void Board::draw()
                     std::cout << GREEN << snake[1].getSymbol() << NC;
                     break;
                 case 4:
-                    std::cout << GREEN << "##"<< NC;
+                    std::cout << GREEN << "##" << NC;
                     break;
                 case 5:
                     std::cout << RED << food.getSymbol() << NC;
@@ -140,8 +140,8 @@ void Board::setFoodPos()
 // colisiones
 void Board::collision(){
     if(wallCollision()){
-        snake[0].rebound();
-        snake[1].rebound();
+        snake[0].rebound_edge();
+        snake[1].rebound_edge();
     }
     if(checkEatFood()){
         setFoodPos();
@@ -152,6 +152,11 @@ void Board::collision(){
     if(snake[0].snakeCollision(snake[1])){
         blocks[numBlocks] = snake[0].getPos();
         numBlocks++;
+    }
+    if (blocksCollision()) {
+        std::cout << "Choco\n";
+        /* snake[0].rebound();
+        snake[1].rebound(); */
     }
     
 }
@@ -169,6 +174,17 @@ bool Board::wallCollision(){
     for(int i=0; i<2; i++){
         if (snake[i].getPos().X > (cols+2)-1 || snake[i].getPos().X < 0 || snake[i].getPos().Y > (rows+2)-1 || snake[i].getPos().Y < 0){
             return 1;
+        }
+    }
+    return 0;
+}
+
+bool Board::blocksCollision(){
+    for (int s=0; s<2; s++){
+        for(int i=0; i<numBlocks ; i++){
+            if (snake[s].getPos().X == blocks[i].X && snake[s].getPos().Y == blocks[i].Y){
+                return 1;
+            }
         }
     }
     return 0;

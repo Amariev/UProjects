@@ -33,6 +33,7 @@ class Board
     void collision();
     bool wallCollision();
     bool checkEatFood();
+    bool blocksCollision();
     
     void update();
 };
